@@ -55,21 +55,9 @@ export class AppComponent {
 			const nombreHoja = wb.SheetNames;
 
 			/* save data */
-			let data = (XLSX.utils.sheet_to_json(wb.Sheets[nombreHoja[0]]));
 			for (let index = 0; index < nombreHoja.length; index++) {
 				const element = nombreHoja[index];
-				if (element == 'Productos') {
-					this.productos = (XLSX.utils.sheet_to_json(wb.Sheets[element]));
-				}
-				if (element == 'Marcas') {
-					this.marcas = (XLSX.utils.sheet_to_json(wb.Sheets[element]));
-				}
-				if (element == 'Categorias') {
-					this.categorias = (XLSX.utils.sheet_to_json(wb.Sheets[element]));
-				}
-				if (element == 'Categorias_productos') {
-					this.categoria_producto = (XLSX.utils.sheet_to_json(wb.Sheets[element]));
-				}
+				this.productos = (XLSX.utils.sheet_to_json(wb.Sheets[element]));
 			}
 		};
 		reader.readAsBinaryString(target.files[0]);
@@ -77,24 +65,26 @@ export class AppComponent {
 	}
 
 	guardarExcel() {
+		let categorias =[];
+		this.productos.forEach((element) => {
+			categorias = JSON.parse(element.categorias)
+		})
 		let datos = {
 			data: {
 				producto: this.productos,
-				marca: this.marcas,
-				categoria: this.categorias,
-				categoria_producto: this.categoria_producto
+				categorias: categorias
 			}
 		};
 		this.inputFile.nativeElement.value = "";
-
 		this._appService.categorias(datos).subscribe(
 			(res: any) => {
 				if (res) {
 					this.obtenerMarca();
+					alert(res)
 				}	
 			},
 			(error: any) => {
-				console.log(error)
+				alert(error.error.text)
 			})
 	}
 
