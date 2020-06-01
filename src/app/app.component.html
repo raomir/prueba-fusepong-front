@@ -15,7 +15,7 @@
 </nav>
 <div class="row ml-4 mt-5">
     <br><br>
-    <input class="form-control-file" (change)="onFileChange($event)" type="file">
+    <input #inputFile class="form-control-file" (change)="onFileChange($event)" type="file">
     <button class="btn btn-outline-success btn-sm" (click)="guardarExcel()" type="button">Subir</button>
 </div>
 <div class="container" *ngIf="mostrar">

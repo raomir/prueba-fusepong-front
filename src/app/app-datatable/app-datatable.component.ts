@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AppServiceService } from '../app-service.service';
+import { CommonService } from '../commonService';
 
 @Component({
   selector: 'app-app-datatable',
@@ -12,7 +13,10 @@ export class AppDatatableComponent implements OnInit {
   
   public datos = [];
 
-  constructor(private _appService: AppServiceService) { }
+  constructor(
+    private _appService: AppServiceService,
+    public _commonService: CommonService
+  ) { }
 
   ngOnInit(): void {
     this.cargarTabla()

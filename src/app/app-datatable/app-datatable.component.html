@@ -25,8 +25,8 @@
       <td>{{d.tipo_producto}}</td>
       <td>{{d.visible}}</td>
       <td>{{d.cantidad}}</td>
-      <td>{{d.precio_anterior}}</td>
-      <td>{{d.precio}}</td>
+      <td>{{_commonService.formatearNumero(d.precio_anterior, ',', '.', 2)}}</td>
+      <td>{{_commonService.formatearNumero(d.precio, ',', '.', 2)}}</td>
     </tr>
   </tbody>
 </table>

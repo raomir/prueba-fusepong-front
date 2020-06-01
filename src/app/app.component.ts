@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { AppServiceService } from './app-service.service';
 
@@ -8,6 +8,9 @@ import { AppServiceService } from './app-service.service';
 	styleUrls: ['./app.component.styl']
 })
 export class AppComponent {
+	
+	@ViewChild('inputFile')
+	inputFile: ElementRef
 
 	public productos = [];
 	public marcas = [];
@@ -17,7 +20,9 @@ export class AppComponent {
 	public idMarca = 0;
 	public listaMarcas = [];
 
-	constructor(private _appService: AppServiceService) { }
+	constructor(
+		private _appService: AppServiceService,
+	) { }
 
 	ngOnInit(){
 		this.obtenerMarca();
@@ -80,7 +85,8 @@ export class AppComponent {
 				categoria_producto: this.categoria_producto
 			}
 		};
-		
+		this.inputFile.nativeElement.value = "";
+
 		this._appService.categorias(datos).subscribe(
 			(res: any) => {
 				if (res) {
