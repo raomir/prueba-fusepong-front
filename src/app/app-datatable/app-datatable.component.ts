@@ -25,6 +25,8 @@ export class AppDatatableComponent implements OnInit {
   cargarTabla() {
     this._appService.obtenerProductos(this.id).subscribe(
       (res: any) => {
+        console.log("Respuesta de los datos de la tabla")
+        console.log(res)
         this.datos = res;
       })
   }

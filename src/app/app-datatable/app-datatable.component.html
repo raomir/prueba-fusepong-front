@@ -1,32 +1,36 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Producto</th>
-      <th scope="col">Descripción</th>
-      <th scope="col">On sale</th>
-      <th scope="col">Referencia</th>
-      <th scope="col">Puntaje</th>
-      <th scope="col">Tipo producto</th>
-      <th scope="col">Visible</th>
-      <th scope="col">Cantidad</th>
-      <th scope="col">Precio anterior</th>
-      <th scope="col">Precio</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let d of datos">
-      <th scope="row">{{d.id}}</th>
-      <td>{{d.nombre}}</td>
-      <td>{{d.descripcion}}</td>
-      <td>{{d.on_sale}}</td>
-      <td>{{d.referencia}}</td>
-      <td>{{d.score}}</td>
-      <td>{{d.tipo_producto}}</td>
-      <td>{{d.visible}}</td>
-      <td>{{d.cantidad}}</td>
-      <td>{{_commonService.formatearNumero(d.precio_anterior, ',', '.', 2)}}</td>
-      <td>{{_commonService.formatearNumero(d.precio, ',', '.', 2)}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive-lg col-lg-8">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">On sale</th>
+        <th scope="col">Referencia</th>
+        <th scope="col">Puntaje</th>
+        <th scope="col">Tipo producto</th>
+        <th scope="col">Visible</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio anterior</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Categorias</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of datos">
+        <th scope="row">{{d.id}}</th>
+        <td>{{d.nombre}}</td>
+        <td>{{d.descripcion}}</td>
+        <td>{{d.on_sale}}</td>
+        <td>{{d.referencia}}</td>
+        <td>{{d.score}}</td>
+        <td>{{d.tipo_producto}}</td>
+        <td>{{d.visible}}</td>
+        <td>{{d.cantidad}}</td>
+        <td>{{_commonService.formatearNumero(d.precio_anterior, ',', '.', 2)}}</td>
+        <td>{{_commonService.formatearNumero(d.precio, ',', '.', 2)}}</td>
+        <td *ngFor="let c of d.categoriums">{{c.nombre}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

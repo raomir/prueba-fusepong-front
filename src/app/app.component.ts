@@ -65,25 +65,25 @@ export class AppComponent {
 	}
 
 	guardarExcel() {
-		let categorias =[];
-		this.productos.forEach((element) => {
-			categorias = JSON.parse(element.categorias)
-		})
 		let datos = {
 			data: {
 				producto: this.productos,
-				categorias: categorias
 			}
 		};
 		this.inputFile.nativeElement.value = "";
+		console.log(datos)
 		this._appService.categorias(datos).subscribe(
 			(res: any) => {
 				if (res) {
 					this.obtenerMarca();
+					console.log("Respuesta al guardar correctamente el producto")
+					console.log(res)
 					alert(res)
 				}	
 			},
 			(error: any) => {
+				console.log("Respuesta de error de la consulta de guardar producto")
+				console.log(error)
 				alert(error.error.text)
 			})
 	}
