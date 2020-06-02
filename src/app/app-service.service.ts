@@ -15,8 +15,7 @@ export class AppServiceService {
       'Content-Type': 'application/json',
         'Accept': 'application/json'
     });
-    // this.url = 'https://prueba-fusepong-back.herokuapp.com';
-    this.url = 'http://localhost:3000'
+    this.url = 'https://prueba-fusepong-back.herokuapp.com';
   }
 
   categorias(data): Observable<any> {
