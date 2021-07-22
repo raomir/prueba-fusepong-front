@@ -31,7 +31,7 @@
     "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "xlsx": "^0.16.1",
+    "xlsx": "^0.17.0",
     "zone.js": "~0.10.2",
     "@angular/cli": "^9.1.7",
     "@angular/compiler-cli": "^9.1.9",
